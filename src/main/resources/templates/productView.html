@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>PRODUCT VIEW | Wedding Cake Bootstrap Theme</title>
+
+
+    <!--    AL MEU !!!-->
+    <title>Front PAGE</title>
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"></script>
+
+
+
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .bg {
+            animation: slide 3s ease-in-out infinite alternate;
+            background-image: linear-gradient(-60deg, chocolate 50%, beige 50%);
+            bottom: 0;
+            left: -50%;
+            opacity: .5;
+            position: fixed;
+            right: -50%;
+            top: 0;
+            z-index: -1;
+        }
+
+        .bg2 {
+            animation-direction: alternate-reverse;
+            animation-duration: 4s;
+        }
+
+        .bg3 {
+            animation-duration: 5s;
+        }
+
+        h1 {
+            font-family: monospace;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-25%);
+            }
+            100% {
+                transform: translateX(25%);
+            }
+        }
+
+        .card-custom {
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        #price {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #design {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        /*card hover effect*/
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif
+        }
+
+        .container {
+            min-height: 100vh;
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        p {
+            margin: 0px
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            background: #fff;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            user-select: none;
+            z-index: 10;
+            overflow: hidden
+        }
+
+        .card:hover {
+            color: black;
+            transform: scale(1.035);
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
+            background: linear-gradient(white, aquamarine);
+        }
+
+        @keyframes popBackground {
+            0% {
+                height: 20px;
+                border-top-left-radius: 50%;
+                border-top-right-radius: 50%
+            }
+
+            50% {
+                height: 80px;
+                border-top-left-radius: 75%;
+                border-top-right-radius: 75%
+            }
+
+            75% {
+                height: 160px;
+                border-top-left-radius: 85%;
+                border-top-right-radius: 85%
+            }
+
+            100% {
+                height: 320px;
+                border-top-left-radius: 100%;
+                border-top-right-radius: 100%
+            }
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+
+<a href="/cards">
+    <div><img src="/imagines/carusel2.jpg" class="d-block w-100" alt="..."> </div></a>
+<br>
+
+
+<div id="design" class="card card-custom text-center card-img-top" style="width: 37rem;">
+    <img th:src="${product.imagineUrl}" class="card-img-top" alt="Car Pictures">
+    <div class="card-body">
+        <h5 class="card-title" th:text="${product.brand}">Card title</h5>
+        <p class="card-text" th:text="${product.description}"></p>
+        <p class="card-text" th:text="'Weight: '+ ${product.mileage} + ' KG' "></p>
+        <h4 id="price" class="card-text" th:text="'Price: '+${product.price} + ' Lei' "></h4>
+        <p class="card-text" sec:authorize="hasAuthority('ADMIN')" th:text="${product.quantity} + ' in Stock' "></p>
+
+        <a th:href="@{'/add-cart/' + ${product.productId}}" class="btn btn-dark"
+           sec:authorize="hasAuthority('USER')">Buy</a>
+
+        <a th:href="@{'/product/edit/' + ${product.productId}}" class="btn btn-dark"
+           sec:authorize="hasAuthority('ADMIN')">Edit</a>
+
+        <a th:href="@{'/product/delete/' + ${product.productId}}" class="btn btn-dark"
+           sec:authorize="hasAuthority('ADMIN')">Delete</a>
+
+        <a class="btn btn-dark" href="/gallery" sec:authorize="hasAuthority('USER')">Gallery</a>
+
+    </div>
+</div>
+
+
+<br>
+<div class="text-center">
+    <button>
+        <a href="/cards" class="btn btn-dark">BACK CARDS</a>
+    </button>
+</div>
+<br>
+<br>
+
+</body>
+</html>

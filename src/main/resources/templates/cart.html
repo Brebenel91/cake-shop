@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+
+
+    <title>Shopping CART | Wedding Cake Bootstrap Theme</title>
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"></script>
+
+
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        h1 {
+            font-family: monospace;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-25%);
+            }
+            100% {
+                transform: translateX(25%);
+            }
+        }
+
+        #price {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /*card hover effect*/
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif
+        }
+
+        .container {
+            min-height: 100vh;
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        p {
+            margin: 0px
+        }
+
+        .card {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            background: #fff;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            user-select: none;
+            z-index: 10;
+            overflow: hidden
+        }
+
+        .card:hover {
+            color: black;
+            transform: scale(1.035);
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
+            background: linear-gradient(white, aquamarine);
+        }
+
+        @keyframes popBackground {
+            0% {
+                height: 20px;
+                border-top-left-radius: 50%;
+                border-top-right-radius: 50%
+            }
+
+            50% {
+                height: 80px;
+                border-top-left-radius: 75%;
+                border-top-right-radius: 75%
+            }
+
+            75% {
+                height: 160px;
+                border-top-left-radius: 85%;
+                border-top-right-radius: 85%
+            }
+
+            100% {
+                height: 320px;
+                border-top-left-radius: 100%;
+                border-top-right-radius: 100%
+            }
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+
+
+
+
+<!--shopping cart-->
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container">
+                <div class="row">
+                    <div class="card text-center" th:each="c:${cart}" style="width: 37rem; margin:auto;">
+                        <img th:src="${c.product.imagineUrl}">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${c.product.brand}"></h5>
+                            <p id="price" class="card-text" th:text="'Price: ' + ${c.product.price} + ' Lei'"></p>
+                            <p class="card-text" th:text="'Cantitate: '+ ${c.quantity}"></p>
+                            <p id="price" class="card-text" th:text="'Total: ' + ${c.getTotal}"></p>
+                            <a th:href="@{${'/delete-cart/' + c.cartId}}" class="btn btn-dark">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--suma produselor din cos-->
+    <br>
+    <div class="alert alert-info" role="alert">
+        <h3 class="alert-heading">Well done!</h3>
+        <h3 sec:autorize="hasAnyAuthority('ADMIN', 'USER')">
+            <span sec:authentication="name"/> the taste of the products in the basket is remarkable!</h3>
+        <hr>
+
+        <li class="list-group-item" th:text="'Total cost: ' + ${total} + ' Lei'"></li>
+
+        <a th:href="'/cards'"
+           class="btn btn-dark">Continue Shopping</a>
+        <a th:href="'/pay'" class="btn btn-dark">Pay</a>
+
+    </div>
+</div>
+
+
+
+</body>
+</html>
