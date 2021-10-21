@@ -46,8 +46,8 @@ public class ProductController {
         if (user.isPresent()) {
 //            cart count
             Integer userId = userRepository.findUserEntityByUsername(user.get().getUsername()).getUserId();
-            Long cartLenght = cartRepository.countAllByUserId(userId);
-            modelAndView.addObject("cartSize", cartLenght);
+            Long cartLength = cartRepository.countAllByUserId(userId);
+            modelAndView.addObject("cartSize", cartLength);
         }
 
         //        search
@@ -115,8 +115,8 @@ public class ProductController {
         if (user.isPresent()) {
 //            cart count
             Integer userId = userRepository.findUserEntityByUsername(user.get().getUsername()).getUserId();
-            Long cartLenght = cartRepository.countAllByUserId(userId);
-            modelAndView.addObject("cartSize", cartLenght);
+            Long cartLength = cartRepository.countAllByUserId(userId);
+            modelAndView.addObject("cartSize", cartLength);
         }
 
         return modelAndView;

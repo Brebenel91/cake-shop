@@ -17,13 +17,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.authorizeRequests().antMatchers("/login", "/register", "/error",
-
-                "/index", "/contact", "/about", "/gallery", "/offers", "/stuff",
-
-                "/product/view/*", "/bootstrap/**", "/css/**", "/ext/**", "/fonts/**", "/js/**","/cards",
-
-                "/static/imagines/*", "/images/**", "/imagines/**", "/gallery/**").permitAll();
+        http.authorizeRequests().antMatchers("/index", "/register", "/login", "/error",
+                "/bootstrap/**", "/css/**", "/ext/**", "/fonts/**", "/js/**",
+                "/static/imagines/*", "/images/**", "/imagines/**",
+                "/contact", "/about", "/gallery", "/offers", "/stuff",
+                "/product/view/*", "/cards", "/gallery/**").permitAll();
 
         http.authorizeRequests().anyRequest().authenticated();
         http.formLogin()
@@ -34,14 +32,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/index")
                 .failureUrl("/login");
 
-        http.logout().logoutUrl("/logout").logoutSuccessUrl("/index").deleteCookies("JSESSIONID").clearAuthentication(true).invalidateHttpSession(true);
+        http.logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/index")
+                .deleteCookies("JSESSIONID"
+                ).clearAuthentication(true)
+                .invalidateHttpSession(true);
     }
 
+    // TODO use delegating password encoder
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    // TODO: use user service implementation
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth, DataSource dataSource, PasswordEncoder passwordEncoder) throws Exception {
         auth.jdbcAuthentication().passwordEncoder(passwordEncoder).dataSource(dataSource);

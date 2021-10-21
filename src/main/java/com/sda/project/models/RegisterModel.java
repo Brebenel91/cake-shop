@@ -1,5 +1,8 @@
 package com.sda.project.models;
 
+// TODO: rename package models to dto
+
+// TODO: rename RegisterModel to RegisterRequest
 public class RegisterModel {
 
     private String username;

@@ -157,7 +157,7 @@
     <div class="card-body">
         <h5 class="card-title" th:text="${product.brand}">Card title</h5>
         <p class="card-text" th:text="${product.description}"></p>
-        <p class="card-text" th:text="'Weight: '+ ${product.mileage} + ' KG' "></p>
+        <p class="card-text" th:text="'Weight: '+ ${product.kg} + ' KG' "></p>
         <h4 id="price" class="card-text" th:text="'Price: '+${product.price} + ' Lei' "></h4>
         <p class="card-text" sec:authorize="hasAuthority('ADMIN')" th:text="${product.quantity} + ' in Stock' "></p>
 

@@ -2,7 +2,7 @@ package com.sda.project.entities;
 
 import javax.persistence.*;
 
-
+// TODO: remove entity from name
 @Entity
 @Table(name = "authorities")
 public class AuthorityEntity {

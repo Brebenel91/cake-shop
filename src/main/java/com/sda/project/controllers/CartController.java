@@ -49,8 +49,8 @@ public class CartController {
             modelAndView.addObject("cart", cartRepository.findAllByUser_Username(user.get().getUsername()));
 //cartCount
             Integer userId = userRepository.findUserEntityByUsername(user.get().getUsername()).getUserId();
-            Long cartLenght = cartRepository.countAllByUserId(userId);
-            modelAndView.addObject("cartSize", cartLenght);
+            Long cartLength = cartRepository.countAllByUserId(userId);
+            modelAndView.addObject("cartSize", cartLength);
             CartEntity dbCartEntity = cartRepository.findByProductIdAndUserId(userId, userId);
 //total price
             Double totalCart = 0.0;

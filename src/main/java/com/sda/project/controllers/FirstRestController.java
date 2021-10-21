@@ -41,7 +41,7 @@ public class FirstRestController {
                              @PathVariable Integer id) {
         ProductEntity dbEntity = productRepository.findById(id).orElse(new ProductEntity());
         dbEntity.setBrand(productEntity.getBrand());
-        dbEntity.setMileage(productEntity.getMileage());
+        dbEntity.setKg(productEntity.getKg());
         dbEntity.setPrice(productEntity.getPrice());
         dbEntity.setQuantity(productEntity.getQuantity());
         productRepository.save(dbEntity);

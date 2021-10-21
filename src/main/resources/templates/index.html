@@ -53,6 +53,7 @@
                 <li><a href="/logout" sec:authorize="isAuthenticated()">LOGOUT</a></li>
                 <li><a href="/register" sec:authorize="!isAuthenticated()">REGISTER</a></li>
 
+
                 <li class="nav-item">
                     <!--                    count shopping cart-->
                     <a class="nav-link" sec:authorize="hasAuthority('USER')" href="/get-cart">SHOPPING CART (<span

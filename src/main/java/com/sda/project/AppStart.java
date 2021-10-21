@@ -1,12 +1,12 @@
 package com.sda.project;
 
-import com.sda.project.config.AppConfig;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
-
+@SpringBootApplication
 public class AppStart {
+
     public static void main(String[] args) {
-        SpringApplication.run(AppConfig.class);
+        SpringApplication.run(AppStart.class);
     }
 }
