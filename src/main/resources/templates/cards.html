@@ -21,7 +21,8 @@
     <![endif]-->
 
     <!--    AL MEU !!!-->
-    <link th:rel="stylesheet" th:href="@{/css/main.css}"/>
+    <link th:rel="stylesheet" th:href="@{/css/cards.css}"/>
+
 
     <link href="https://fonts.googleapis.com/css?family=Courgette|Open+Sans&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -31,12 +32,7 @@
             crossorigin="anonymous"></script>
 
 
-    <style>
-    <!--Animated Background-->
 
-
-
-    </style>
 
 </head>
 <body>
@@ -47,79 +43,73 @@
 <div class="bg bg2"></div>
 <div class="bg bg3"></div>
 
-<a href="/gallery">
-<div><img src="/imagines/carusel1.jpg" class="d-block w-100" alt="..."> </div></a>
-<br>
-
 <!--Navbar-->
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="index.html" title="Wedding Cake Bootstrap Theme">
-                <img class="img-responsive" src="images/logo.png" alt="Wedding Cake Bootstrap Theme"/>
-            </a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/index" class="smooth-scroll">HOME</a></li>
-                <li><a href="/about">ABOUT</a></li>
-                <li><a href="/stuff">SERVICES</a></li>
-                <li><a href="/offers">OFFERS</a></li>
-                <li><a href="/gallery">GALLERY</a></li>
-                <li><a href="/cards" sec:authorize="isAuthenticated()">CARDS</a></li>
-                <li><a href="/contact">CONTACT</a></li>
-                <li><a href="/login" sec:authorize="!isAuthenticated()">LOGIN</a></li>
-                <li><a href="/logout" sec:authorize="isAuthenticated()">LOGOUT</a></li>
-                <li><a href="/register" sec:authorize="!isAuthenticated()">REGISTER</a></li>
+<nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
 
-                <li class="nav-item">
-                    <!--                    count shopping cart-->
-                    <a class="nav-link" sec:authorize="hasAuthority('USER')" href="/get-cart">SHOPPING CART (<span
-                            th:text="${cartSize} + ' product'"></span>)</a>
-                </li>
+<!--    <a href="/index">-->
+<!--        <img src="/imagines/weddingCakeLogo.jpg" width="330" height="90"-->
+<!--             class="d-inline-block align-text-top">-->
+<!--    </a>-->
 
 
-                <li><a href="/product/add" sec:authorize="hasAuthority('ADMIN')">ADD PRODUCT</a></li>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/index">HOME <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">ABOUT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/stuff">SERVICES</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/offers">OFFERS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/gallery">GALLERY</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cards" sec:authorize="isAuthenticated()">CARDS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact">CONTACT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" sec:authorize="!isAuthenticated()" href="/login">LOGIN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" sec:authorize="isAuthenticated()" href="/logout">LOGOUT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" sec:authorize="!isAuthenticated()" href="/register">REGISTER</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/product/add" sec:authorize="hasAuthority('ADMIN')">ADD PRODUCT</a>
+            </li>
+
+            <li class="nav-item">
+                <!--                    count shopping cart-->
+                <a class="nav-link" sec:authorize="hasAuthority('USER')" href="/get-cart">SHOPPING CART (<span
+                        th:text="${cartSize} + ' product'"></span>)</a>
+            </li>
+
+        </ul>
+    </div>
+
 </nav>
 
 
-
-<!-- Navbar nou-->
-<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-<!--    <a class="navbar-brand" href="#">Navbar</a>-->
-<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
-<!--        <span class="navbar-toggler-icon"></span>-->
-<!--    </button>-->
-<!--    <div class="collapse navbar-collapse" id="navbarNav">-->
-<!--        <ul class="navbar-nav">-->
-<!--            <li class="nav-item active">-->
-<!--                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" href="#">Features</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" href="#">Pricing</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link disabled" href="#">Disabled</a>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </div>-->
-<!--</nav>-->
+<!--imagine-->
+<a href="/gallery">
+    <div><img src="/imagines/carusel1.jpg" class="d-block w-100" alt="..."></div>
+</a>
+<br>
 
 <!--card-->
 <div class="container2 text-center">
@@ -156,7 +146,6 @@
 </div>
 <br>
 <br>
-
 
 
 <footer id="subfooter" class="clearfix">
@@ -216,8 +205,6 @@
 
 <script src="js/jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
-
-
 
 
 </body>

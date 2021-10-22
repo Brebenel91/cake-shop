@@ -15,141 +15,75 @@
             crossorigin="anonymous"></script>
 
 
-
-    <style>
-        html {
-            height: 100%;
-        }
-
-        body {
-            margin: 0;
-        }
-
-        .bg {
-            animation: slide 3s ease-in-out infinite alternate;
-            background-image: linear-gradient(-60deg, chocolate 50%, beige 50%);
-            bottom: 0;
-            left: -50%;
-            opacity: .5;
-            position: fixed;
-            right: -50%;
-            top: 0;
-            z-index: -1;
-        }
-
-        .bg2 {
-            animation-direction: alternate-reverse;
-            animation-duration: 4s;
-        }
-
-        .bg3 {
-            animation-duration: 5s;
-        }
-
-        h1 {
-            font-family: monospace;
-        }
-
-        @keyframes slide {
-            0% {
-                transform: translateX(-25%);
-            }
-            100% {
-                transform: translateX(25%);
-            }
-        }
-
-        .card-custom {
-            margin: auto;
-            margin-top: 50px;
-        }
-
-        #price {
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        #design {
-            font-size: 20px;
-            text-align: center;
-        }
-
-        /*card hover effect*/
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif
-        }
-
-        .container {
-            min-height: 100vh;
-            padding: 5px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center
-        }
-
-        p {
-            margin: 0px
-        }
-
-        .card {
-            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-            background: #fff;
-            transition: all 0.5s ease;
-            cursor: pointer;
-            user-select: none;
-            z-index: 10;
-            overflow: hidden
-        }
-
-        .card:hover {
-            color: black;
-            transform: scale(1.035);
-            box-shadow: rgba(0, 0, 0, 0.24) 0px 5px 10px;
-            background: linear-gradient(white, aquamarine);
-        }
-
-        @keyframes popBackground {
-            0% {
-                height: 20px;
-                border-top-left-radius: 50%;
-                border-top-right-radius: 50%
-            }
-
-            50% {
-                height: 80px;
-                border-top-left-radius: 75%;
-                border-top-right-radius: 75%
-            }
-
-            75% {
-                height: 160px;
-                border-top-left-radius: 85%;
-                border-top-right-radius: 85%
-            }
-
-            100% {
-                height: 320px;
-                border-top-left-radius: 100%;
-                border-top-right-radius: 100%
-            }
-        }
-
-
-    </style>
+    <!--    AL MEU !!!-->
+    <link th:rel="stylesheet" th:href="@{/css/cards.css}"/>
 
 </head>
 <body>
+
 <div class="bg"></div>
 <div class="bg bg2"></div>
 <div class="bg bg3"></div>
 
-<a href="/cards">
-    <div><img src="/imagines/carusel2.jpg" class="d-block w-100" alt="..."> </div></a>
-<br>
+
+<!--Navbar-->
+<nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
+
+<!--    <a href="/index">-->
+<!--        <img src="/imagines/weddingCakeLogo.jpg" width="330" height="90"-->
+<!--             class="d-inline-block align-text-top">-->
+<!--    </a>-->
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/index">HOME <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">ABOUT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/stuff">SERVICES</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/offers">OFFERS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/gallery">GALLERY</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cards" sec:authorize="isAuthenticated()">CARDS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact">CONTACT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" sec:authorize="!isAuthenticated()" href="/login">LOGIN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" sec:authorize="isAuthenticated()" href="/logout">LOGOUT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" sec:authorize="!isAuthenticated()" href="/register">REGISTER</a>
+            </li>
+
+            <li class="nav-item">
+                <!--                    count shopping cart-->
+                <a class="nav-link" sec:authorize="hasAuthority('USER')" href="/get-cart">SHOPPING CART (<span
+                        th:text="${cartSize} + ' product'"></span>)</a>
+            </li>
+
+        </ul>
+    </div>
+
+</nav>
+
 
 
 <div id="design" class="card card-custom text-center card-img-top" style="width: 37rem;">
@@ -176,14 +110,10 @@
 </div>
 
 
-<br>
-<div class="text-center">
-    <button>
-        <a href="/cards" class="btn btn-dark">BACK CARDS</a>
-    </button>
-</div>
-<br>
-<br>
+
+<!--<a href="/cards">-->
+<!--    <div><img src="/imagines/carusel2.jpg" class="d-block w-100" alt="..."> </div></a>-->
+<!--<br>-->
 
 </body>
 </html>

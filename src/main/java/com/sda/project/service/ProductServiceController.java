@@ -1,4 +1,4 @@
-package com.sda.project.controllers;
+package com.sda.project.service;
 
 import com.sda.project.entities.ProductEntity;
 import com.sda.project.repositories.CartRepository;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -23,7 +22,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 
 @Controller
-public class ProductController {
+public class ProductServiceController {
 
     @Autowired
     private ProductRepository productRepository;
@@ -34,9 +33,6 @@ public class ProductController {
     @Autowired
     private CartRepository cartRepository;
 
-    public ProductController() {
-        System.out.println(getClass().getSimpleName() + " created");
-    }
 
     @GetMapping("/cards")
     public ModelAndView getCardsPage(String keyword) {

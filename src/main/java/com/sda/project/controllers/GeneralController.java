@@ -1,6 +1,7 @@
 package com.sda.project.controllers;
 
 import com.sda.project.repositories.CartRepository;
+import com.sda.project.repositories.ProductRepository;
 import com.sda.project.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -19,10 +20,27 @@ public class GeneralController {
     private UserRepository userRepository;
     @Autowired
     private CartRepository cartRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
     @GetMapping("/index")
-    public ModelAndView getIndexHome() {
+    public ModelAndView getIndex(String keyword) {
         ModelAndView modelAndView = new ModelAndView("index");
+
+        Optional<User> user = getLoggedInUser();
+        if (user.isPresent()) {
+//            cart count
+            Integer userId = userRepository.findUserEntityByUsername(user.get().getUsername()).getUserId();
+            Long cartLength = cartRepository.countAllByUserId(userId);
+            modelAndView.addObject("cartSize", cartLength);
+        }
+        //        search
+        if (keyword != null) {
+            modelAndView.addObject("stockList", productRepository.findByKeyword(keyword));
+        } else {
+            modelAndView.addObject("stockList", productRepository.findAll());
+            return modelAndView;
+        }
         return modelAndView;
     }
 
@@ -49,13 +67,9 @@ public class GeneralController {
         return modelAndView;
     }
 
-    @GetMapping("/contact")
-    public ModelAndView getContact() {
-        ModelAndView modelAndView = new ModelAndView("contact");
-        return modelAndView;
-    }
 
-    //    cartCount/userIsPresent
+
+    //                cart count / userIsPresent
     public Optional<User> getLoggedInUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (null != auth && auth.getPrincipal() instanceof User) {
@@ -64,6 +78,14 @@ public class GeneralController {
         }
         return Optional.empty();
     }
+
+    @GetMapping("/contact")
+    public ModelAndView getContact() {
+        ModelAndView modelAndView = new ModelAndView("contact");
+        return modelAndView;
+    }
+
+
 
 
     @GetMapping("/cart")
