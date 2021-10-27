@@ -67,26 +67,7 @@ public class GeneralController {
         return modelAndView;
     }
 
-    @GetMapping("/cards")
-    public ModelAndView getCardsPage(String keyword) {
-        ModelAndView modelAndView = new ModelAndView("cards");
 
-        Optional<User> user = getLoggedInUser();
-        if (user.isPresent()) {
-//            cart count
-            Integer userId = userRepository.findUserEntityByUsername(user.get().getUsername()).getUserId();
-            Long cartLength = cartRepository.countAllByUserId(userId);
-            modelAndView.addObject("cartSize", cartLength);
-        }
-        //        search
-        if (keyword != null) {
-            modelAndView.addObject("stockList", productRepository.findByKeyword(keyword));
-        } else {
-            modelAndView.addObject("stockList", productRepository.findAll());
-            return modelAndView;
-        }
-        return modelAndView;
-    }
 
     //                cart count / userIsPresent
     public Optional<User> getLoggedInUser() {

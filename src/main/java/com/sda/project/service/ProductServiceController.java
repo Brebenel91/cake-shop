@@ -23,6 +23,7 @@ import java.util.Optional;
 
 @Controller
 public class ProductServiceController {
+
     @Autowired
     private ProductRepository productRepository;
 
@@ -31,6 +32,39 @@ public class ProductServiceController {
 
     @Autowired
     private CartRepository cartRepository;
+
+
+    @GetMapping("/cards")
+    public ModelAndView getCardsPage(String keyword) {
+        ModelAndView modelAndView = new ModelAndView("cards");
+
+        Optional<User> user = getLoggedInUser();
+        if (user.isPresent()) {
+//            cart count
+            Integer userId = userRepository.findUserEntityByUsername(user.get().getUsername()).getUserId();
+            Long cartLength = cartRepository.countAllByUserId(userId);
+            modelAndView.addObject("cartSize", cartLength);
+        }
+
+        //        search
+        if (keyword != null) {
+            modelAndView.addObject("stockList", productRepository.findByKeyword(keyword));
+        } else {
+            modelAndView.addObject("stockList", productRepository.findAll());
+            return modelAndView;
+        }
+        return modelAndView;
+    }
+
+    //            cart count / userIsPresent
+    public Optional<User> getLoggedInUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (null != auth && auth.getPrincipal() instanceof User) {
+            User user = (User) auth.getPrincipal();
+            return Optional.of(user);
+        }
+        return Optional.empty();
+    }
 
     @GetMapping("/product/add")
     public ModelAndView productAdd() {
@@ -44,10 +78,6 @@ public class ProductServiceController {
         ModelAndView modelAndView = new ModelAndView("redirect:/cards");
         String path1 = "target/classes/static/imagines";
         String path2 = "src/main/resources/static/imagines";
-
-//        String path1 = "target/classes/templates/images/gallery";
-//        String path2 = "src/main/resources/templates/images/gallery";
-
         String filename = file.getOriginalFilename();
 
         if (filename != null && !filename.isEmpty()) {
@@ -70,15 +100,6 @@ public class ProductServiceController {
         } catch (IOException ex) {
             throw new IOException(ex.getMessage());
         }
-    }
-    //                cart count / userIsPresent
-    public Optional<User> getLoggedInUser() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (null != auth && auth.getPrincipal() instanceof User) {
-            User user = (User) auth.getPrincipal();
-            return Optional.of(user);
-        }
-        return Optional.empty();
     }
 
     @GetMapping("/product/view/{id}")
@@ -115,6 +136,4 @@ public class ProductServiceController {
         ModelAndView modelAndView = new ModelAndView("error");
         return modelAndView;
     }
-
-
 }
