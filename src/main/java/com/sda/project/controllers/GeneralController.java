@@ -67,8 +67,6 @@ public class GeneralController {
         return modelAndView;
     }
 
-
-
     //                cart count / userIsPresent
     public Optional<User> getLoggedInUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -85,15 +83,11 @@ public class GeneralController {
         return modelAndView;
     }
 
-
-
-
     @GetMapping("/cart")
     public ModelAndView getCart() {
         ModelAndView modelAndView = new ModelAndView("cart");
         return modelAndView;
     }
-
 
     @GetMapping("/pay")
     public ModelAndView getPay() {

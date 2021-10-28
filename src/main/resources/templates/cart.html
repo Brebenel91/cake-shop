@@ -13,8 +13,57 @@
             crossorigin="anonymous"></script>
 
     <!--    AL MEU !!!-->
-    <link th:rel="stylesheet" th:href="@{/css/cards.css}"/>
 
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .bg {
+            animation: slide 3s ease-in-out infinite alternate;
+            background-image: linear-gradient(-60deg, chocolate 50%, beige 50%);
+            bottom: 0;
+            left: -50%;
+            opacity: .5;
+            position: fixed;
+            right: -50%;
+            top: 0;
+            z-index: -1;
+        }
+
+        .bg2 {
+            animation-direction: alternate-reverse;
+            animation-duration: 4s;
+        }
+
+        .bg3 {
+            animation-duration: 5s;
+        }
+
+        h1 {
+            font-family: monospace;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-25%);
+            }
+            100% {
+                transform: translateX(25%);
+            }
+        }
+
+        #design {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+
+    </style>
 
 </head>
 <body>
@@ -26,7 +75,6 @@
 
 <!--Navbar-->
 <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
-
 
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -52,10 +100,10 @@
                 <a class="nav-link" href="/gallery">GALLERY</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/cards" sec:authorize="isAuthenticated()">CARDS</a>
+                <a class="nav-link" href="/contact">CONTACT</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/contact">CONTACT</a>
+                <a class="nav-link" href="/cards" sec:authorize="isAuthenticated()">CAKE SHOP</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" sec:authorize="!isAuthenticated()" href="/login">LOGIN</a>
@@ -79,7 +127,6 @@
 </nav>
 
 
-
 <!--shopping cart-->
 <div class="container">
 
@@ -87,7 +134,7 @@
         <div class="col-md-12">
             <div class="container">
                 <div class="row">
-                    <div class="card text-center" th:each="c:${cart}" style="width: 37rem; margin:auto;">
+                    <div class="card text-center" th:each="c:${cart}" style="width: 20rem; margin:auto;">
                         <img th:src="${c.product.imagineUrl}">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${c.product.brand}"></h5>
@@ -118,7 +165,6 @@
 
     </div>
 </div>
-
 
 
 </body>

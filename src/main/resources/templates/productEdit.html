@@ -21,14 +21,8 @@
 <div class="bg bg3"></div>
 
 <!--Navbar-->
+<br>
 <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
-
-<!--    <a href="/index">-->
-<!--        <img src="/imagines/weddingCakeLogo.jpg" width="330" height="90"-->
-<!--             class="d-inline-block align-text-top">-->
-<!--    </a>-->
-
-
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -52,10 +46,11 @@
                 <a class="nav-link" href="/gallery">GALLERY</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/cards" sec:authorize="isAuthenticated()">CARDS</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/contact">CONTACT</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/cards" sec:authorize="isAuthenticated()">CAKE SHOP</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" sec:authorize="!isAuthenticated()" href="/login">LOGIN</a>
@@ -65,6 +60,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" sec:authorize="!isAuthenticated()" href="/register">REGISTER</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/product/add" sec:authorize="hasAuthority('ADMIN')">ADD PRODUCT</a>
             </li>
 
             <li class="nav-item">

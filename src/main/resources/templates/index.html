@@ -47,19 +47,17 @@
                 <li><a href="/stuff">SERVICES</a></li>
                 <li><a href="/offers">OFFERS</a></li>
                 <li><a href="/gallery">GALLERY</a></li>
-                <li><a href="/cards" sec:authorize="isAuthenticated()">CARDS</a></li>
                 <li><a href="/contact">CONTACT</a></li>
+                <li><a href="/cards" sec:authorize="isAuthenticated()">CAKE SHOP</a></li>
                 <li><a href="/login" sec:authorize="!isAuthenticated()">LOGIN</a></li>
                 <li><a href="/logout" sec:authorize="isAuthenticated()">LOGOUT</a></li>
                 <li><a href="/register" sec:authorize="!isAuthenticated()">REGISTER</a></li>
-
 
                 <li class="nav-item">
                     <!--                    count shopping cart-->
                     <a class="nav-link" sec:authorize="hasAuthority('USER')" href="/get-cart">SHOPPING CART (<span
                             th:text="${cartSize} + ' product'"></span>)</a>
                 </li>
-
 
                 <li><a href="/product/add" sec:authorize="hasAuthority('ADMIN')">ADD PRODUCT</a></li>
 
@@ -88,8 +86,8 @@
         <div class="item">
             <img src="images/carousel1.jpg" alt="carousel1" style="width:100%"/>
             <div class="carousel-caption">
-                <h2>What does it come from?</h2>
-                <p>Contrary to popular belief, Lorem Ipsum is not simply random text.</p>
+                <h2>Where does it come from?</h2>
+                <p>Contrary to popular belief, is not simply random text.</p>
             </div>
         </div>
         <div class="item">
@@ -116,13 +114,9 @@
             <div class="col-md-8">
                 <h1 class="text-danger">Welcome!</h1>
                 <h3>Why do we use it?</h3>
-                <p class="text-justify">It is a long established fact that a reader will be distracted by the readable
-                    content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                    more-or-less normal distribution of letters, as opposed to using 'Content here, content here',
-                    making it look like readable English. Many desktop publishing packages and web page editors now use
-                    Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites
-                    still in their infancy. Various versions have evolved over the years, sometimes by accident,
-                    sometimes on purpose.</p>
+                <p class="text-justify">Customers just love to add it to any occasion or make an occasion around it. It
+                    really sets the mood for a fun time! Yes, it has become somewhat of a bucket list, must try dessert
+                    item, and you will go crazy for it!</p>
             </div>
             <div class="col-md-4 text-center">
                 <img src="images/image1.jpg" class="img-responsive"/>
@@ -134,14 +128,13 @@
             </div>
             <div class="col-md-8">
                 <h1 class="text-danger">About Us</h1>
-                <h3>What is Lorem Ipsum?</h3>
-                <p class="text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
-                    a galley of type and scrambled it to make a type specimen book. It has survived not only five
-                    centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was
-                    popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and
-                    more recently with desktop publishing software like Aldus PageMaker including versions of Lorem
-                    Ipsum.</p>
+                <h3>What is Cake Boss?</h3>
+                <p class="text-justify">The Cake Boss' most colorful creation! Our famous Rainbow Cake is six layers
+                    stacked high of delicious rainbow-colored vanilla cake sandwiched between and covered in a silky
+                    sweet vanilla buttercream icing and coated in rainbow sprinkles... This colorful cake creation is
+                    six layers of happiness wrapped in a sweet vanilla buttercream frosting and then engulfed in rainbow
+                    sprinkles.
+                </p>
             </div>
         </div>
     </div>
@@ -152,7 +145,7 @@
         <div class="row">
             <div class="col-md-3">
                 <p style="font-size:18px;"><span class="fa fa-birthday-cake text-danger"></span> CAKE OFFER</p>
-                <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>
+                <p>The standard chunk of used since the 1500s is reproduced below for those interested.</p>
             </div>
             <div class="col-md-3">
                 <p style="font-size:18px;"><span class="fa fa-clock-o text-danger"></span> OPEN HOURS</p>

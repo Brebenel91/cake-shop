@@ -45,13 +45,6 @@
 
 <!--Navbar-->
 <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
-
-<!--    <a href="/index">-->
-<!--        <img src="/imagines/weddingCakeLogo.jpg" width="330" height="90"-->
-<!--             class="d-inline-block align-text-top">-->
-<!--    </a>-->
-
-
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -75,10 +68,11 @@
                 <a class="nav-link" href="/gallery">GALLERY</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/cards" sec:authorize="isAuthenticated()">CARDS</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/contact">CONTACT</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/cards" sec:authorize="isAuthenticated()">CAKE SHOP</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" sec:authorize="!isAuthenticated()" href="/login">LOGIN</a>
@@ -104,7 +98,6 @@
 
 </nav>
 
-
 <!--imagine-->
 <a href="/gallery">
     <div><img src="/imagines/carusel1.jpg" class="d-block w-100" alt="..."></div>
@@ -112,12 +105,12 @@
 <br>
 
 <!--card-->
-<div class="container2 text-center">
+<div class="container text-center">
     <div class="row">
         <div class="col-md-12 text-center">
-            <div class="container2">
+            <div class="container">
                 <div class="row">
-                    <div class="card text-center" th:each="product:${stockList}" style="width: 27rem;">
+                    <div class="card text-center" th:each="product:${stockList}" style="width: 23rem;">
                         <img th:src="${product.imagineUrl}">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${product.brand}"></h5>

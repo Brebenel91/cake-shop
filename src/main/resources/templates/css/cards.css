@@ -74,9 +74,9 @@ card hover effect-- >
 }
 
 .container {
-    /*min-height: 100vh;*/
-    /*padding: 5px 0;*/
-    /*display: flex;*/
+    min-height: 100vh;
+    padding: 5px 0;
+    display: flex;
     align-items: center;
     justify-content: center
 }
