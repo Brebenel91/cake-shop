@@ -37,7 +37,6 @@
 </head>
 <body>
 
-
 <!--Animated Background-->
 <div class="bg"></div>
 <div class="bg bg2"></div>
@@ -90,7 +89,7 @@
             <li class="nav-item">
                 <!--                    count shopping cart-->
                 <a class="nav-link" sec:authorize="hasAuthority('USER')" href="/get-cart">SHOPPING CART (<span
-                        th:text="${cartSize} + ' product'"></span>)</a>
+                        th:text="${cartSize}"></span>)</a>
             </li>
 
         </ul>
@@ -98,12 +97,8 @@
 
 </nav>
 
-<!--imagine-->
-<a href="/gallery">
-    <div><img src="/imagines/carusel1.jpg" class="d-block w-100" alt="..."></div>
-</a>
-<br>
 
+<br>
 <!--card-->
 <div class="container text-center">
     <div class="row">
@@ -134,70 +129,18 @@
 <br>
 <div class="text-center">
     <button>
-        <a href="/gallery" class="btn btn-dark">BACK CARDS</a>
+        <a href="/gallery" class="btn btn-dark">BACK GALLERY</a>
     </button>
 </div>
 <br>
 <br>
 
 
-<footer id="subfooter" class="clearfix">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <p style="font-size:18px;"><span class="fa fa-birthday-cake text-danger"></span> CAKE OFFER</p>
-                <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>
-            </div>
-            <div class="col-md-3">
-                <p style="font-size:18px;"><span class="fa fa-clock-o text-danger"></span> OPEN HOURS</p>
-                <p>Mondays : Closed</p>
-                <p>Tue-Fri : 0am - 12am</p>
-                <p>Sat-Sun : 7am - 1am</p>
-            </div>
-            <div class="col-md-3">
-                <p style="font-size:18px;"><span class="fa fa-map-marker text-danger"></span> CONTACTS</p>
-                <p>54, North Road, PA 45086, USA</p>
-                <p>+1 888 455 6677</p>
-                <p><a href="mailto:mail@example.com">mail@example.com</a></p>
-            </div>
-            <div class="col-md-3">
-                <p style="font-size:18px;"><span class="fa fa-envelope-o text-danger"></span> NEWSLETTER</p>
-                <p>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Enter your email..."/>
-                    <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button">Subscribe</button>
-                        </span>
-                </div>
-                </p>
-                <p><br/></p>
-                <p>
-                    <a class="fa fa-twitter footer-socialicon" target="_blank" href="https://twitter.com/"></a>
-                    <a class="fa fa-facebook footer-socialicon" target="_blank" href="https://www.facebook.com/"></a>
-                    <a class="fa fa-google-plus footer-socialicon" target="_blank" href="https://plus.google.com/"></a>
-                    <a class="fa fa-linkedin footer-socialicon" target="_blank" href="https://plus.google.com/"></a>
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<footer id="footer" class="clearfix">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-
-            </div>
-            <div class="col-md-4">
-                <p>Created by <a href="https://www.shieldui.com" title="Shield UI">Shield UI</a> and hosted by <a
-                        href="https://www.prepbootstrap.com" title="PrepBootstrap">PrepBootstrap</a></p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script src="js/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<!--imagine-->
+<br>
+<a href="/gallery">
+    <div><img src="/imagines/carusel1.jpg" class="d-block w-100" alt="..."></div>
+</a>
 
 
 </body>
